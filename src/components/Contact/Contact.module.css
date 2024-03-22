@@ -1,0 +1,46 @@
+.cardContainer {
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border: 2px solid purple;
+  list-style: none;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  background: lavender;
+}
+.cardBox {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+.nameClient {
+  line-height: 0.6;
+  font-weight: 500;
+  font-size: 1.3em;
+  margin-bottom: 0px;
+}
+.namberClient {
+  font-size: 1.3em;
+  line-height: 0.6;
+  font-weight: 500;
+}
+.btn {
+  font-size: 1.3em;
+  line-height: 0.6;
+  font-weight: 500;
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid purple;
+  background: rgb(236, 205, 229);
+}
+.iconBox {
+  display: flex;
+  flex-direction: row;
+}
+.icon {
+  width: 2.5em;
+  height: 2.5em;
+  padding-top: 15px;
+}

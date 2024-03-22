@@ -1,0 +1,46 @@
+.contactForm {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 3px solid purple;
+  border-radius: 5px;
+  background: lavender;
+}
+.formButton {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid purple;
+  padding: 20px;
+  font-size: 1.3em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f5f2f2;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  height: 30px;
+  margin-bottom: 10px;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  color: purple;
+  font-weight: 500;
+}
+.field {
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+}
