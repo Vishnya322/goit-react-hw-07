@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './SearchBox.module.css';
-import { changeFilter } from '../../redux/filtersSlice';
+import { changeFilter, selectNameFilter } from '../../redux/filtersSlice';
 
 const SearchBox = () => {
-  const selectNameFilter = useSelector(state => state.filters.name);
+  const nameFilter = useSelector(selectNameFilter);
   const dispatch = useDispatch();
 
   const handleSearch = e => {
@@ -15,7 +15,7 @@ const SearchBox = () => {
       <input
         className={css.searchForm}
         type="text"
-        value={selectNameFilter}
+        value={nameFilter}
         onChange={handleSearch}
         id="searchInput"
         autoComplete="off"

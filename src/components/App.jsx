@@ -4,8 +4,29 @@ import SearchBox from './SearchBox/SearchBox';
 import ContactList from './ContactList/ContactList';
 import initialContacts from './contact.json';
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from '../redux/contactsOps';
+import Loader from './Loader';
+import Error from './Error';
+import toast, { Toaster } from 'react-hot-toast';
+import { selectLoading, selectError } from '../redux/contactsSlice';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchContacts())
+      .unwrap()
+      .then(() => {
+        toast.success('fetchContacts fulfilled');
+      })
+      .catch(() => {
+        toast.error('fetchContacts rejected');
+      });
+  }, [dispatch]);
+
   const [contacts, setContacts] = useState(() => {
     return initialContacts;
   });
@@ -37,7 +58,10 @@ const App = () => {
       <h1 className={css.nameBook}>Phonebook</h1>
       <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
+      {error && <Error>Error!!!</Error>}
+      {loading && <Loader>Loading message</Loader>}
       <ContactList contacts={visibleContacts} onDelete={deleteContact} />
+      <Toaster />
     </div>
   );
 };
