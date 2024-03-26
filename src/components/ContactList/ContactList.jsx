@@ -7,18 +7,14 @@ import {
 } from '../../redux/contactsSlice';
 
 const nameContacts = selectContacts;
-const ContactList = ({ onDelete }) => {
+const ContactList = () => {
   const contacts = useSelector(selectVisibleContacts);
 
   return (
     <ul className={css.list}>
       {contacts.map(contact => (
         <li className={css.item} key={contact.id}>
-          <Contact
-            data={contact}
-            onDelete={onDelete}
-            nameContacts={nameContacts}
-          />
+          <Contact data={contact} nameContacts={nameContacts} />
         </li>
       ))}
     </ul>

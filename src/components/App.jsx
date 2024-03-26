@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../redux/contactsOps';
 import Loader from './Loader';
 import Error from './Error';
-import toast, { Toaster } from 'react-hot-toast';
+
 import { selectLoading, selectError } from '../redux/contactsSlice';
 
 const App = () => {
@@ -17,21 +17,14 @@ const App = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchContacts())
-      .unwrap()
-      .then(() => {
-        toast.success('fetchContacts fulfilled');
-      })
-      .catch(() => {
-        toast.error('fetchContacts rejected');
-      });
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   const [contacts, setContacts] = useState(() => {
     return initialContacts;
   });
 
-  const [filter, setFilter] = useState(''); //фільтрація
+  const [filter, setFilter] = useState('');
 
   const addContact = newContact => {
     setContacts(prevContact => {
@@ -61,7 +54,6 @@ const App = () => {
       {error && <Error>Error!!!</Error>}
       {loading && <Loader>Loading message</Loader>}
       <ContactList contacts={visibleContacts} onDelete={deleteContact} />
-      <Toaster />
     </div>
   );
 };
